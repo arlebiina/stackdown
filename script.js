@@ -527,3 +527,45 @@ grid = createGrid();
 draw(); 
 loadHighScore();
 loadSettings(); // <-- ADICIONADO: Carrega as configurações de som salvas
+
+let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiIndex = 0;
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === konamiCode[konamiIndex]) {
+    konamiIndex++;
+    if (konamiIndex === konamiCode.length) {
+     
+      triggerEasterEgg();
+      konamiIndex = 0; 
+    }
+  } else {
+    konamiIndex = 0; 
+  }
+});
+
+function triggerEasterEgg() {
+
+  
+                   
+  alert('uau! :0 você desbloqueou a função festa!');
+  
+  
+  const colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#0000ff', '#4b0082', '#9400d3'];
+  let colorIndex = 0;
+
+
+  function changeColor() {
+    document.body.style.backgroundColor = colors[colorIndex];
+    colorIndex = (colorIndex + 1) % colors.length;
+  }
+
+
+  const colorInterval = setInterval(changeColor, 500);
+
+ 
+  setTimeout(() => {
+    clearInterval(colorInterval);
+    document.body.style.backgroundColor = ''; 
+  }, 10000000);
+}
